@@ -94,8 +94,19 @@ When base/rover is already connected to U-center, click View, go to Message View
 [Insert image here]
 As shown in the figure, the current firmware version is FWVER = HPG 1.30 REF, indicating that the current firmware version is 1.30 for base module. 
 
-Enabling RTK GPS through Mission Planner
-========================================
+Basic opperating manual
+=======================
+This part of the tutorial uses Mission Planner ground control software and Arducopter-3.5 flight control firmware for operating instructions. If you are using PX4 firmware and QGroundControl ground station software, please refer to `this link <https://docs.px4.io/en/advanced_features/rtk-gps.html>`__.
+
+-Preperation before operation.
+To use HERE+ on a UAV, you need the following hardware:
+[Insert image1 of hardware]
+Before using, make sure the hardware is connected correctly: The base station module is connected to the computer port through USB; a telemetry module is connected to another USB port of the same computer. For UAV, HERE + rover module is connected to the flight controller GPS connector, telemetry module is connected to the TELEM interface. 
+[Insert image2 of hardware]
+
+-Place vehicle and base stations so that their GPS antennas have a clear view of the sky (i.e. this will not work indoors!).
+During operation, please place the base station in an outdoor environment with sufficient sky coverage to obtain a good satellite signal. Place the base station on a stable and elevated platform, such as a tripod.
+[Insert image3 of hardware]
 
 - Connect the "here+" base station to the ground station PC
 - Connect to the vehicle's flight controller (i.e. Pixhawk, Pixhawk2, etc) using Mission Planner
