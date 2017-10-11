@@ -120,10 +120,12 @@ During operation, please place the base station in an outdoor environment with s
 Base module setting using Mission Planner
 =========================================
 Start with base module setup first. During the base station setup, the rover and the UAV do not need to be turned on. Open the Mission Planner ground station software on your computer and go to the initial setup -> Optional Hardware -> RTK / GPS Inject page. You will see the following page: 
+
 .. image:: ../../../images/Mission_planner_1.png
 	:target: ../_images/Mission_planner_1.png
 
 Select the correct base module com port in the top left corner and click connect. In the SurveyIn Acc section, enter the absolute geographic accuracy that you expect your HERE + base station to achieve. In the Time column, enter the minimum survey time you expect. Click on Restart, the ground station will transfer the data you have entered to the HERE + base module, the base module will start a new round of surveying. You will see the following page: 
+
 .. image:: ../../../images/Mission_planner_2.png
 	:target: ../_images/Mission_planner_2.png
 
@@ -134,17 +136,21 @@ The base station needs a certain amount of time to meet the accuracy requirement
 It should be noted that the absolute geographic accuracy of the base station here will affect the absolute geographic accuracy of the rover module without affecting the relative accuracy between the base station and rover. If your application does not require UAV with high absolute geographic accuracy, you do not need to set the base station's precision too high, resulting in long survey time. Even if the accuracy of the base station is 1.5 to 2 m, the position accuracy of the rover module relative to the base station can still reach centimeter level.
 
 After the survey is complete, Mission Planner will display the following page:
+
 .. image:: ../../../images/Mission_planner_3.png
 	:target: ../_images/Mission_planner_3.png
+	
 In the RTCM box is shows that the base status indicator is green and both the GPS and Glonass satellite systems are green (if you want to change the satellite system, refer to the following section). The box on the right says Position is valid. 
  
 To store the current location in the Mission Planner: Click Save Current Pos, enter a name in the dialog box, and click OK. As shown below, you can see your saved location in the list. Click the Use button for the location you saved. The base station will enter the fixed mode and the status will show Using FixedLLA. In the future, if you set the base station in the same location, you do not need to conduct survey again, just click the Use button that corresponds to the location you have saved. 
+
 .. image:: ../../../images/Mission_planner_4.png
 	:target: ../_images/Mission_planner_4.png
 
 Rover Module and Flight Controller Setup 
 ========================================
 After the base station is set up, you can turn on the UAV. Using the same Mission Planner to connect the telemetry module, the base station data will be transmitted through telemetry module to the HERE + rover module on the UAV. In the Mission Planner main page, you can see the current GPS status displayed as RTK Float / RTK Fixed / 3D RTK, indicating that the positioning of the UAV has entered the RTK mode. RTK Float is a floating-point solution; RTK Fixed is a fixed solution. RTK Fixed mode has a higher accuracy and requires better signal strength. 3D RTK is unified saying of RTK Float / RTK in the Mission Planner Chinese version. 
+
 .. image:: ../../../images/Disarmed.png
 	:target: ../_images/Disarmed.png
 
