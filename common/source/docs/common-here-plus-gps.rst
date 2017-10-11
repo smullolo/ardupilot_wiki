@@ -223,3 +223,142 @@ Acc: current accuracy in meters
 	
 - The saved position can be used the next time you set up the base station in the exact same location. However, if you change to another location for surveying, please ensure you clear the position information in the dialogue box that pops up when you click ‘Enter Base Position’. Otherwise, the previously saved point will be taken every time you connect to the base module.
 
+Use U-centre for live data recording/replaying
+==============================================
+One function of the U-center is to record the base / rover module data for later analysis. Firstly, when the base or rover module is already connected to U-center (in the same way it is connected when updating firmware), click the following bug icon to turn on the debug message: 
+
+.. image:: ../../../images/HERE+_bug_icon.png
+	:target: ../_images/HERE+_bug_icon.png
+
+Then, click into View -> message view -> UBX -> RXM -> RTCM (RTCM input status), right click to enable message. 
+
+.. image:: ../../../images/HERE+_Enable_message.png
+	:target: ../_images/HERE+_Enable_message.png
+
+Finally, click on the red recording icon on the upper left corner of the interface (shown below), select an address to save the recording, click OK, the recording will begin. When recording is stopped, the recording will appear in the previously saved address. 
+
+.. image:: ../../../images/HERE+_record_icon.png
+	:target: ../_images/HERE+_record_icon.png
+
+To play the recorded data, click the green play icon, select a playback speed, select the specified address of your stored data file, then the data will be played. 
+
+.. image:: ../../../images/HERE+_play_icon.png
+	:target: ../_images/HERE+_play_icon.png
+
+Use U-Centre for debugging/advanced configuration 
+=================================================
+-Check Status of Base Station.
+Connect the base module to U-center software, check the display box in the upper right corner of the interface, Fix Mode section is displayed as TIME. If Fix Mode does not enter TIME, the current state of the base station is not sufficient to allow the rover module to enter RTK mode. As shown in the figure below, Fix Mode is displayed in 3D mode, hence the RTK standard has not yet been reached. 
+
+.. image:: ../../../images/HERE+_Debug1.png
+	:target: ../_images/HERE+_Debug1.png
+
+The possible reasons for Base station not entering TIME Mode: Firstly, the signal received by base station is not strong enough. To check the satellite strength received by base station, see the bottom right corner of the software interface. The vertical bars in the box indicate satellites strength received by the current base station. A vertical bar represents a satellite (GPS or Beidou / GLONASS, depending on the choice of satellite systems). TIME Mode of base station requires: 5 GPS satellite signals +2 GLONASS satellite signals in the strength of 40 or more; or 5 GPS satellite signals +3 Beidou satellite signal in the strength of 40 or more. As shown in the figure below, only one satellite strength is higher than 40, the signal condition does not meet the RTK standard. 
+
+.. image:: ../../../images/HERE+_Debug2.png
+	:target: ../_images/HERE+_Debug2.png
+
+Secondly, the user input of survey-in accuracy requirement is too strict to achieve, or the base station has not yet completed the surveying process. Using U-centre for survey-in setup, please refer to section c) in this chapter. 
+
+-Check whether Rover receives base correction data(Timeout).
+After the base station enters the TIME Mode, it is necessary to transmit the RTCM data to the rover, for rover to enter RTK modes. Therefore, a real-time and efficient communication between rover and base station is necessary for good RTK positioning performance. 
+
+Check whether there is a delay in the data transmission between the mobile station and the base station, connect the rover module to U-center (or replay the data log to inspect a previous operation). Go to Messages view -> NMEA -> GxGGA directory to see Age of DGNSS Corr parameters. This parameter represents the time at which the rover did not receive the base station data. In the case of the default base station message frequency 1HZ, if this parameter exceeds 1s, there is a certain delay in the data transmission. 
+
+-Set Survey-in/Fixed mode for base station.
+Similar to Mission Planner RTK Inject page, U-center can also be used to set the base station survey-in time and accuracy. Enter the Messages view option, UBX's CGF menu, enter the TMODE3 tab. Select 1.Survey-in under the Mode drop-down option, and set the survey time (and the minimum time required for the base station to survey). The survey-in current status can be viewed in the NAV-> SVIN page in Message View. 
+
+.. image:: ../../../images/HERE+_Survey-in_current_status.png
+	:target: ../_images/HERE+_Survey-in_current_status.png
+
+The base station can also be set to Fixed Mode. When the base station's current precise geographic coordinates are known, the coordinates can be entered directly into the base station, which saves the time required for surveying. In the TMODE3 page, select Fixed mode in the drop-down list, and then enter the precise known base station coordinates. 
+ 
+After setting the survey or fixed mode, click the Send button at the bottom left of the page to transfer the modified data to the base station. 
+ 
+-Use Beidou/GLonass.
+The uBlox 1.30 firmware uses the GPS + GLONASS navigation system for location services by default. If you want to change to GPS + Beidou navigation system, you need to enter the Messages view -> UBX -> CGF -> GNSS directory, cancel the tick on GLONASS Enable option, and then check the Beidou Enable option. After the selection, click send to complete the change. 
+
+.. image:: ../../../images/HERE+_Beidou_enable_option.png
+	:target: ../_images/HERE+_Beidou_enable_option.png
+
+To save the current settings, go to the Messages view -> UBX -> CFG (Configuration) page and click the Save current configuration option, then click Send (as shown below). 
+
+.. image:: ../../../images/HERE+_Save_beidou_option.png
+	:target: ../_images/HERE+_Save_beidou_option.png
+
+.. note::
+   
+   Base station and rover should use the same navigation system configuration, or rover will not be able to enter RTK modes. 
+
+-Base module I/O port and protocol setup.
+UBlox M8P chip supports a variety of input and output protocols, including USB, UART, I2C and so on. The HERE + base station module uses the USB port for data communication and RTK outputs. If you need to confirm the current settings, go to the Messages view -> UBX -> CFG -> PRT directory and select 3-USB in the Target field. The correct input and output protocols are shown below: 
+
+
+.. image:: ../../../images/HERE+_Port_and_protocol_setup.png
+	:target: ../_images/HERE+_Port_and_protocol_setup.png
+
+If you want to use more output protocols (such as UART), you can also select the output protocol and a specific message combination on this page. If you want to set a string of specific messages to output under a variety of protocols, you can go to the Messages view -> UBX -> CGF -> MSG directory, select a specific message, and then check the type of protocol you want to output. 
+
+To save the current settings, go to the Messages view -> UBX -> CFG (Configuration) page and click the Save current configuration option, then click Send. 
+
+-Change Rover module output rate.
+By default, the output frequency of the position information by the rover module is 1HZ. If you need to speed up the position output frequency, you can enter the Messages view -> UBX -> CGF -> RATE directory, change the Measurement Period. For example, the measurement period is changed to 200 ms and the measurement frequency will be increased to 5 Hz. 
+
+.. image:: ../../../images/HERE+_Change_rover_model_output_rate.png
+	:target: ../_images/HERE+_Change_rover_model_output_rate.png
+
+To save the current settings, go to the Messages view -> UBX -> CFG (Configuration) page and click the Save current configuration option, then click Send. 
+
+Change Base Antenna and Testing  
+===============================
+HERE + base module antenna is a Taoglass antenna. Users can select different antennas according to their needs and connect them to base module. We have conducted a test of three different antennas in an outdoor environment, where three antennas at the same time, same location were connected to the HERE + base station, data were logged using Ucentre recording function. It should be noted that the following data are not sufficient to give a comprehensive conclusion about which antenna is better, but the user can use the following methods to test, compare different antennas to find he one more suitable for their application. 
+
+Test Antenna A：
+
+.. image:: ../../../images/HERE+_Test_Antenna_A.png
+	:target: ../_images/HERE+_Test_Antenna_A.png
+
+Test Antenna B：
+
+.. image:: ../../../images/HERE+_Test_Antenna_B.png
+	:target: ../_images/HERE+_Test_Antenna_B.png
+
+Original Antenna:
+
+.. image:: ../../../images/HERE+_Original_antenna.png
+	:target: ../_images/HERE+_Original_antenna.png
+
+Base status with Antenna A at TIME Mode: 
+
+.. image:: ../../../images/HERE+_Time_Mode_A.png
+	:target: ../_images/HERE+_Time_Mode_A.png
+
+Base status with Antenna B at TIME Mode: 
+
+.. image:: ../../../images/HERE+_Time_Mode_B.png
+	:target: ../_images/HERE+_Time_Mode_B.png
+
+Base status with original antenna at TIME Mode: 
+ 
+.. image:: ../../../images/HERE+_Time_Mode_C.png
+	:target: ../_images/HERE+_Time_Mode_C.png
+
+Satellite signal comparison for each satellite: 
+
+.. image:: ../../../images/HERE+_Satellite_Comparison_Across_Antenna.png
+	:target: ../_images/HERE+_Satellite_Comparison_Across_Antenna.png
+
+Number of satellites reception above 40 with antenna A: 12 satellites
+
+.. image:: ../../../images/HERE+_A_12.png
+	:target: ../_images/HERE+_A_12.png
+
+Number of satellites reception above 40 with antenna B: 13 satellites 
+
+.. image:: ../../../images/HERE+_B_13.png
+	:target: ../_images/HERE+_B_13.png
+
+Number of satellites reception above 40 with original antenna: 14 satellites
+
+.. image:: ../../../images/HERE+_C_14.png
+	:target: ../_images/HERE+_C_14.png
