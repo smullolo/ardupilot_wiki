@@ -64,34 +64,56 @@ During the preparation of this guide, ublox-1.40 version of the firmware has als
 Downloading U-centre UI and 1.30 Firmware
 =========================================
 Upgrading firmware requires the use of Ublox's Windows software U-center. To download U-center, please go to the `official website <https://www.u-blox.com/en/product/u-center-windows>`__. Then follow the prompts to install U-cent software. During the installation process, you will be prompted to install the device Driver, please ensure that only the Standard Driver For Windows is checked, as shown below. 
-[Insert image here]
+
+.. image:: ../../../images/HERE+_Ublox_standard_drivers.png
+	:target: ../_images/HERE+_Ublox_standard_drivers.png
 
 You will also need to download firmware `here <https://www.ublox.com/en/search?keywords=HPG+1.30>`__. Click the choice: u-blox M8 Flash Firmware 3.01 HPG 1.30 - ONLY for High Precision GNSS products.
 
 Connect your HERE+ Base and Rover to Computer
 =============================================
 When upgrading the base station module, use the USB cable to connect the base station module to the computer USB interface, as shown in the following figure: 
-[Insert image here]
+
+.. image:: ../../../images/HERE+_Connect_trough_Usb1.png
+	:target: ../_images/HERE+_Connect_trough_Usb1.png
 
 When upgrading a Rover module, use a hexagonal screwdriver to open the case. The rover module has a USB interface connector identical to the base module, you can use the base module USB cable to connect rover to computer. In addition, during the firmware upgrading process, the rover module needs to be powered by connecting to flight controller, as shown in the following figure: 
-[Insert image here]
+
+.. image:: ../../../images/HERE+_Connect_trough_Usb2.png
+	:target: ../_images/HERE+_Connect_trough_Usb2.png
+
 
 Upgrading Process
 =================
 Open the U-center software, click the connection button (as shown in the red circle), select the com port that corresponds to your base/ rover module.
-[Insert image here]
+
+.. image:: ../../../images/HERE+_U-center_connection_button.png
+	:target: ../_images/HERE+_U-center_connection_button.png
+
 Click tools->u-blox 5 – 8 Flash Firmware Update, and click the settings as shown below:
-[Insert image here]
+
+.. image:: ../../../images/HERE+_Firmware_update_settings.png
+	:target: ../_images/HERE+_Firmware_update_settings.png
+	
 In Firmware image, unzip and select the downloaded 1.30 Firmware. For base module, chose the firmware with title: UBX_M8_301_HPG_130_REFERENCE_NEOM8P2.59a07babb501ba6a89ff87cac2f 2765f.bin  For rover module, choose the firmware: UBX_M8_301_HPG_130_ROVER_NEOM8P0.3ee86a9e4775e3335e742b53527fa5 d0.bin 
-[Insert image here]
+
+.. image:: ../../../images/HERE+_Select_firmware.png
+	:target: ../_images/HERE+_Select_firmware.png
+	
 In Flash Information Structure(FIS) File, select Flash.xml，which is located in the installation address of U-centre software.
-[Insert image here]
+
+.. image:: ../../../images/HERE+_Select_flash.png
+	:target: ../_images/HERE+_Select_flash.png
+	
 Click OK and wait for the firmware uploading to complete. Uploading usually takes only a minute or less. If the uploading is successful, the upgrade interface is displayed in green; if the upgrade is aborted, the interface is displayed in red. If the process is interrupted, or if it is not responding for a long time, the modules will need to be power cycled and uploading needs to be done again.
 
 Check current Rover/Base firmware version
 =========================================
 When base/rover is already connected to U-center, click View, go to Message View -> UBX -> MON _> VER, you will see the interface below:
-[Insert image here]
+
+.. image:: ../../../images/HERE+_U-current_firmware_version.png
+	:target: ../_images/HERE+_U-current_firmware_version.png
+	
 As shown in the figure, the current firmware version is FWVER = HPG 1.30 REF, indicating that the current firmware version is 1.30 for base module. 
 
 Basic opperating manual
@@ -100,13 +122,20 @@ This part of the tutorial uses Mission Planner ground control software and Arduc
 
 -Preperation before operation.
 To use HERE+ on a UAV, you need the following hardware:
-[Insert image1 of hardware]
+
+.. image:: ../../../images/HERE+_hardware_connected_properly.png
+	:target: ../_images/HERE+_hardware_connected_properly.png
+	
 Before using, make sure the hardware is connected correctly: The base station module is connected to the computer port through USB; a telemetry module is connected to another USB port of the same computer. For UAV, HERE + rover module is connected to the flight controller GPS connector, telemetry module is connected to the TELEM interface. 
-[Insert image2 of hardware]
+
+.. image:: ../../../images/HERE+_hardware_connected_properly2.png
+	:target: ../_images/HERE+_hardware_connected_properly2.png
 
 -Place vehicle and base stations so that their GPS antennas have a clear view of the sky (i.e. this will not work indoors!).
 During operation, please place the base station in an outdoor environment with sufficient sky coverage to obtain a good satellite signal. Place the base station on a stable and elevated platform, such as a tripod.
-[Insert image3 of hardware]
+
+.. image:: ../../../images/HERE+_sufficient_sky_coverage.png
+	:target: ../_images/HERE+_sufficient_sky_coverage.png
 
 - Connect the "here+" base station to the ground station PC
 - Connect to the vehicle's flight controller (i.e. Pixhawk, Pixhawk2, etc) using Mission Planner
