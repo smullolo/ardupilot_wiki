@@ -111,8 +111,8 @@ Check current Rover/Base firmware version
 =========================================
 When base/rover is already connected to U-center, click View, go to Message View -> UBX -> MON _> VER, you will see the interface below:
 
-.. image:: ../../../images/HERE+_U-current_firmware_version.png
-	:target: ../_images/HERE+_U-current_firmware_version.png
+.. image:: ../../../images/HERE+_current_firmware_version.png
+	:target: ../_images/HERE+_current_firmware_version.png
 	
 As shown in the figure, the current firmware version is FWVER = HPG 1.30 REF, indicating that the current firmware version is 1.30 for base module. 
 
