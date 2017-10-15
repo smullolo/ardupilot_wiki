@@ -120,27 +120,26 @@ Basic opperating manual
 =======================
 This part of the tutorial uses Mission Planner ground control software and Arducopter-3.5 flight control firmware for operating instructions. If you are using PX4 firmware and QGroundControl ground station software, please refer to `this link <https://docs.px4.io/en/advanced_features/rtk-gps.html>`__.
 
--Preperation before operation.
+Preperation before operation.
+-----------------------------
 To use HERE+ on a UAV, you need the following hardware:
 
 .. image:: ../../../images/HERE+_hardware_connected_properly.png
 	:target: ../_images/HERE+_hardware_connected_properly.png
 	
-Before using, make sure the hardware is connected correctly: The base station module is connected to the computer port through USB; a telemetry module is connected to another USB port of the same computer. For UAV, HERE + rover module is connected to the flight controller GPS connector, telemetry module is connected to the TELEM interface. 
+- Before using, make sure the hardware is connected correctly: The base station module is connected to the computer port through USB; a telemetry module is connected to another USB port of the same computer. For UAV, HERE + rover module is connected to the flight controller GPS connector, telemetry module is connected to the TELEM interface. 
 
 .. image:: ../../../images/HERE+_hardware_connected_properly2.png
 	:target: ../_images/HERE+_hardware_connected_properly2.png
 
--Place vehicle and base stations so that their GPS antennas have a clear view of the sky (i.e. this will not work indoors!).
-During operation, please place the base station in an outdoor environment with sufficient sky coverage to obtain a good satellite signal. Place the base station on a stable and elevated platform, such as a tripod.
+- Place vehicle and base stations so that their GPS antennas have a clear view of the sky (i.e. this will not work indoors!).
+- During operation, please place the base station in an outdoor environment with sufficient sky coverage to obtain a good satellite signal. Place the base station on a stable and elevated platform, such as a tripod.
 
 .. image:: ../../../images/HERE+_sufficient_sky_coverage.png
 	:target: ../_images/HERE+_sufficient_sky_coverage.png
 
-- Connect the "here+" base station to the ground station PC
 - Connect to the vehicle's flight controller (i.e. Pixhawk, Pixhawk2, etc) using Mission Planner
 - Open the Initial Setup >> Optional Hardware >> RTK GPS Inject screen
-- Place the vehicle and base stations so that their GPS antennas have a clear view of the sky (i.e. this will not work indoors!).
 - For first time setup in a new location, click the Enter Base Position button, make sure the dialogue box shows empty location information, as shown below:
 
 .. image:: ../../../images/Here_Plus_MP1.png
