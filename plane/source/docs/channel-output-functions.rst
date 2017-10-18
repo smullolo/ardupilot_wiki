@@ -79,7 +79,7 @@ aircraft. The ones that are implemented on fixed wing are listed below:
 -  TiltMotorLeft=75
 -  TiltMotorRight=76
 -  ElevonLeft=77
--  ElevonRight=77
+-  ElevonRight=78
 -  VTailLeft=79
 -  VTailRight=80
 
@@ -114,6 +114,8 @@ Setting a channel to RCPassThru means it will output the value that is
 coming into the board from the corresponding input channel. For example,
 if SERVO5_FUNCTION is 1 (meaning RCPassThru) then channel 5 output will
 always be equal to channel 5 input.
+
+You can also map individual channels to any output channel by using the specific channel mapping functions. These are numbered starting at value 51, for RCInputChannel1. So you can for example set SERVO11_FUNCTION=53 which will map RC input channel 3 to output channel 11.
 
 .. _channel-output-functions_flap:
 

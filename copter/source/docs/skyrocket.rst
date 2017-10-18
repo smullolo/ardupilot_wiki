@@ -12,7 +12,7 @@ The SkyRocket SkyViper GPS streaming drone uses ArduPilot as its main flight con
 Where to Buy
 ------------
 
-The `SkyViper GPS Streaming drone <http://sky-viper.com/product/info/V2450GPS-sd>`__ (`version with FPV headset <http://sky-viper.com/product/info/V2450GPS-fpv>`__ is expected to be on sale through Amazon, ToysRUs and Target in the US, Canada, Chile, France, German, Holland, Lithuania, Mexico, New Zealand, Serbia, UK from October 2017.
+The `SkyViper GPS Streaming drone <http://sky-viper.com/product/info/V2450GPS-sd>`__ (`version with FPV headset <http://sky-viper.com/product/info/V2450GPS-fpv>`__) is on sale through Amazon, `ToysRUs <https://www.target.com/p/sky-viper-streaming-video-drone-v2450hd/-/A-52136996>`__ and `Target <https://www.target.com/p/sky-viper-streaming-video-drone-v2450hd/-/A-52136996>`__ in the US, Canada, Chile, France, German, Holland, Lithuania, Mexico, New Zealand, Serbia, UK from October 2017.
 
 SkyRocket sells a variety of different drones, be sure to get the GPS Streaming drone which should have a white shell and usually sells for around $150 US.
 
@@ -32,14 +32,15 @@ Hardware
 - 145g
 - flight time of about 11min
 - top speed of between 8m/s ~ 10m/s
+- video streaming uses a Sonix board with ARM CPU running FreeRTOS and OmniVision OV9732 chip
 
 Software
 --------
 
-- the drone ships with a custom version of ArduPilot (Copter) which is close to Copter-3.5 but has additional features that will be coming back into master in the near future (notch filter, etc).  Links to the source are coming soon!
+- the drone ships with a custom version of ArduPilot (Copter) which is close to Copter-3.5 but has additional features that will be coming back into master in the near future (notch filter, etc).  `GitHub repo is here <https://github.com/SkyRocketToys/ardupilot>`__.
 - live video can be viewed through a SkyRocket app (Mission Planner video support coming soon).
 - APWeb (a tiny open source web server) runs on the drone and allows easy calibration, modification of parameters, uploading firmware to both the drone and transmitter, downloading log files, pictures and videos.
-- the transmitter has a relatively low powered STM8 processor running open source software written by Tridge (incorporates some code from Papparazi). more details to follow.
+- the transmitter has a relatively low powered STM8 processor running open source software written by Tridge (incorporates some code from Paparazzi).  `Github repo is here <https://github.com/SkyRocketToys/STM8TX>`__.
 
 Videos
 ------
